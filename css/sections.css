@@ -1,0 +1,402 @@
+/* ============================================ */
+/* SECTIONS.CSS - Content Section Styles */
+/* ============================================ */
+
+/* ========== COMMON SECTION STYLES ========== */
+section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+}
+
+.section-headline {
+  font-size: var(--font-section-title);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.section-subheadline {
+  font-size: var(--font-section-subtitle);
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-light);
+}
+
+/* ========== PRODUCT / ABOUT SECTION ========== */
+#product {
+  background-color: var(--bg-secondary);
+}
+
+.product-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-3xl);
+  align-items: center;
+}
+
+.product-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: var(--border-radius-lg);
+}
+
+.product-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+}
+
+.stat-value {
+  font-size: 48px;
+  font-weight: var(--font-weight-extra-bold);
+  color: var(--theme-color);
+}
+
+.stat-label {
+  font-size: var(--font-body-small);
+  color: var(--text-secondary);
+}
+
+/* ========== BENEFITS SECTION ========== */
+#benefits {
+  background-color: var(--bg-primary);
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-2xl);
+}
+
+.benefit-card {
+  padding: var(--spacing-xl);
+  background-color: var(--bg-secondary);
+  border-radius: var(--border-radius-md);
+  text-align: center;
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.benefit-card.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.benefit-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.benefit-icon {
+  font-size: 48px;
+  margin-bottom: var(--spacing-md);
+}
+
+.benefit-title {
+  font-size: var(--font-body-large);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.benefit-description {
+  font-size: var(--font-body-small);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ========== NUTRITION SECTION ========== */
+#nutrition {
+  background-color: var(--bg-secondary);
+}
+
+.nutrition-label {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: var(--bg-primary);
+  padding: var(--spacing-lg);
+  border: 2px solid var(--border);
+  border-radius: var(--border-radius-sm);
+  font-family: Arial, sans-serif;
+}
+
+.nutrition-title {
+  font-size: 32px;
+  font-weight: var(--font-weight-extra-bold);
+  border-bottom: 8px solid #000;
+  padding-bottom: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+}
+
+.nutrition-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.nutrition-row.bold {
+  font-weight: var(--font-weight-bold);
+  border-bottom: 4px solid #000;
+}
+
+/* ========== REVIEWS SECTION ========== */
+#reviews {
+  background-color: var(--bg-primary);
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-2xl);
+}
+
+.review-card {
+  padding: var(--spacing-xl);
+  background-color: var(--bg-secondary);
+  border-radius: var(--border-radius-md);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.review-card.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.review-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--theme-color), var(--theme-color-hover));
+}
+
+.review-rating {
+  color: var(--theme-color);
+  font-size: 18px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.review-quote {
+  font-size: var(--font-body-medium);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+  font-style: italic;
+}
+
+/* ========== FAQ SECTION ========== */
+#faq {
+  background-color: var(--bg-secondary);
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background-color: var(--bg-primary);
+  border-radius: var(--border-radius-sm);
+  margin-bottom: var(--spacing-md);
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  padding: var(--spacing-lg);
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: var(--font-body-large);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color var(--transition-fast);
+}
+
+.faq-question:hover {
+  color: var(--theme-color);
+}
+
+.faq-icon {
+  font-size: 24px;
+  transition: transform var(--transition-medium);
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-medium), padding var(--transition-medium);
+  padding: 0 var(--spacing-lg);
+}
+
+.faq-item.active .faq-answer {
+  max-height: 500px;
+  padding: 0 var(--spacing-lg) var(--spacing-lg);
+}
+
+.faq-answer p {
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ========== FINAL CTA SECTION ========== */
+#final-cta {
+  background: linear-gradient(135deg, var(--theme-color), var(--theme-color-hover));
+  padding: var(--spacing-3xl) 5%;
+  text-align: center;
+}
+
+#final-cta .section-headline {
+  color: var(--text-contrast);
+  font-size: clamp(40px, 6vw, 64px);
+}
+
+#final-cta .section-subheadline {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-buttons {
+  display: flex;
+  gap: var(--spacing-lg);
+  justify-content: center;
+  margin-top: var(--spacing-xl);
+  flex-wrap: wrap;
+}
+
+.cta-features {
+  display: flex;
+  gap: var(--spacing-xl);
+  justify-content: center;
+  margin-top: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.cta-feature {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: var(--font-body-medium);
+}
+
+/* ========== LOADER STYLES ========== */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-primary);
+  z-index: var(--z-loader);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-very-slow);
+}
+
+#loader.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.loader-content {
+  text-align: center;
+}
+
+.loader-logo img {
+  height: 80px;
+  margin-bottom: var(--spacing-xl);
+}
+
+.loader-progress {
+  width: 300px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: var(--spacing-md);
+}
+
+.loader-progress-fill {
+  height: 100%;
+  width: 0%;
+  background-color: var(--theme-color);
+  transition: width 0.3s ease;
+}
+
+.loader-percentage {
+  font-size: var(--font-body-large);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.loader-message {
+  font-size: var(--font-body-medium);
+  color: var(--text-secondary);
+  transition: opacity 0.3s ease;
+}
+
+/* ========== RESPONSIVE SECTIONS ========== */
+@media (max-width: 1024px) {
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .product-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .product-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-buttons .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}

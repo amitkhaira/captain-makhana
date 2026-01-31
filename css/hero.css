@@ -1,0 +1,281 @@
+/* ============================================ */
+/* HERO.CSS - Hero Section Styles */
+/* ============================================ */
+
+/* ========== HERO CONTAINER ========== */
+#hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 700px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+}
+
+/* ========== PARALLAX BACKGROUND ========== */
+.parallax-background {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: var(--z-background);
+    transition: background-image var(--transition-slow);
+    will-change: transform;
+}
+
+.parallax-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.4) 0%,
+            transparent 50%,
+            rgba(0, 0, 0, 0.6) 100%);
+    z-index: 1;
+}
+
+/* ========== HERO OVERLAY (Left Side Content) ========== */
+.hero-overlay {
+    position: relative;
+    z-index: var(--z-content);
+    max-width: var(--hero-text-max-width);
+    transition: opacity var(--transition-slow);
+
+    /* Glassmorphism Effect */
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-2xl);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Light mode glassmorphism */
+[data-theme="light"] .hero-overlay {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.brand-logo {
+    margin-bottom: var(--spacing-md);
+}
+
+.brand-logo img {
+    height: 60px;
+    width: auto;
+}
+
+.flavor-name {
+    font-family: var(--font-display);
+    font-size: var(--font-hero-title);
+    font-weight: var(--font-weight-extra-bold);
+    color: var(--text-primary);
+    text-transform: uppercase;
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--spacing-xs);
+    letter-spacing: 2px;
+}
+
+.flavor-subtitle {
+    font-family: var(--font-primary);
+    font-size: var(--font-hero-subtitle);
+    font-weight: var(--font-weight-light);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.flavor-description {
+    font-size: var(--font-body-large);
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-xl);
+    max-width: 400px;
+}
+
+.hero-cta-group {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+/* ========== FLAVOR NAVIGATION (Right Side) ========== */
+.flavor-navigation {
+    position: relative;
+    z-index: var(--z-content);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.flavor-index {
+    font-family: var(--font-display);
+    font-size: var(--hero-index-font-size);
+    font-weight: var(--font-weight-extra-bold);
+    color: rgba(255, 255, 255, var(--hero-index-opacity));
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+}
+
+.flavor-nav-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.flavor-nav-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-family: var(--font-display);
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    padding: var(--spacing-sm);
+    transition: color var(--transition-medium);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.flavor-nav-btn:hover {
+    color: var(--theme-color);
+}
+
+.nav-arrow {
+    font-size: 24px;
+}
+
+.nav-divider {
+    width: 60px;
+    height: 1px;
+    background-color: var(--text-muted);
+}
+
+/* ========== SOCIAL ICONS (Bottom Center) ========== */
+.hero-social {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: var(--z-content);
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--text-secondary);
+    transition: color var(--transition-fast), transform var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icon img {
+    width: 100%;
+    height: 100%;
+    filter: brightness(0) saturate(100%) invert(73%) sepia(0%) saturate(0%) hue-rotate(180deg) brightness(95%) contrast(87%);
+    transition: filter var(--transition-fast);
+}
+
+.social-icon:hover img {
+    filter: brightness(0) saturate(100%) invert(43%) sepia(96%) saturate(2462%) hue-rotate(344deg) brightness(92%) contrast(87%);
+    transform: scale(1.1);
+}
+
+/* ========== RESPONSIVE HERO ========== */
+@media (max-width: 1024px) {
+    .flavor-index {
+        font-size: 120px;
+    }
+
+    .hero-overlay {
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    #hero {
+        flex-direction: column;
+        justify-content: center;
+        padding: 80px var(--spacing-lg) 60px;
+        min-height: 600px;
+    }
+
+    .hero-overlay {
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .brand-logo {
+        display: flex;
+        justify-content: center;
+    }
+
+    .flavor-description {
+        max-width: 100%;
+    }
+
+    .hero-cta-group {
+        justify-content: center;
+    }
+
+    .flavor-navigation {
+        position: absolute;
+        right: var(--spacing-lg);
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .flavor-index {
+        font-size: 80px;
+    }
+
+    .hero-social {
+        bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .flavor-name {
+        font-size: clamp(36px, 10vw, 60px);
+    }
+
+    .flavor-subtitle {
+        font-size: clamp(14px, 4vw, 20px);
+    }
+
+    .flavor-description {
+        font-size: 14px;
+    }
+
+    .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .flavor-index {
+        font-size: 60px;
+    }
+}
