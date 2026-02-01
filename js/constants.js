@@ -175,8 +175,9 @@ export const FLAVORS = [
     webpSequence: {
       basePath: "./assets/spicy/",
       fileName: "frame_",
-      frameCount: 240,
-      frameFormat: "0001", // Will generate: frame_0001.webp, frame_0002.webp
+      frameCount: 192,
+      frameFormat: "001", // 3 digits: 000, 001...
+      // suffix: "_delay-0.2s", // Suffix found in file names
       extension: ".webp"
     },
 

@@ -44,8 +44,13 @@ class ParallaxManager {
         // Calculate progress (0-1)
         const scrollProgress = Math.min(scrollY / maxScroll, 1);
 
+        const flavor = FLAVORS[this.currentFlavorIndex];
+        const totalFrames = (flavor.webpSequence && flavor.webpSequence.frameCount)
+            ? flavor.webpSequence.frameCount
+            : PARALLAX.totalFrames;
+
         // Calculate current frame (0 to totalFrames-1)
-        const targetFrame = Math.floor(scrollProgress * (PARALLAX.totalFrames - 1));
+        const targetFrame = Math.floor(scrollProgress * (totalFrames - 1));
 
         // Only update if frame changed
         if (targetFrame !== this.currentFrame) {
@@ -62,16 +67,22 @@ class ParallaxManager {
 
         const flavor = FLAVORS[this.currentFlavorIndex];
 
-        // For now, use the static hero image
-        // When WebP sequences are added, this will switch between frames
-        const imagePath = flavor.images.hero;
+        // Check if this flavor has a configured suffix, implying frames are ready
+        if (flavor.webpSequence && flavor.webpSequence.suffix) {
+            // Calculate frame index based on scroll position
+            // Ensure we don't exceed frame count
+            const safeFrame = Math.min(frameNumber, flavor.webpSequence.frameCount - 1);
 
-        this.parallaxBg.style.backgroundImage = `url('${imagePath}')`;
+            // Construct filename: frame_XXX_delay-0.2s.webp
+            // Using 3-digit padding as per "001" format
+            const paddedFrame = String(safeFrame).padStart(3, '0');
+            const framePath = `${flavor.webpSequence.basePath}${flavor.webpSequence.fileName}${paddedFrame}${flavor.webpSequence.suffix}${flavor.webpSequence.extension}`;
 
-        // If WebP sequences exist, use frame-based loading
-        // const paddedFrame = String(frameNumber + 1).padStart(4, '0');
-        // const framePath = `${flavor.webpSequence.basePath}${flavor.webpSequence.fileName}${paddedFrame}${flavor.webpSequence.extension}`;
-        // this.parallaxBg.style.backgroundImage = `url('${framePath}')`;
+            this.parallaxBg.style.backgroundImage = `url('${framePath}')`;
+        } else {
+            // Fallback to static hero image for other flavors
+            this.parallaxBg.style.backgroundImage = `url('${flavor.images.hero}')`;
+        }
     }
 
     switchFlavor(newFlavorIndex) {
